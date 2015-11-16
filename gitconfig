@@ -1,0 +1,30 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Alicia Tang
+	email = alicia.x.tang@gmail.com
+[push]
+	default = simple
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[apply]
+	whitespace = nowarn
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "br"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "st"]
+    added = yellow
+    changed = green
+    untracked = cyan
