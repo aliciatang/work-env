@@ -1,0 +1,3 @@
+# Ignore all files ending with `.swp`
+*.swp
+.DS_Store
