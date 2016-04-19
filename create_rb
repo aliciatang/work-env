@@ -1,0 +1,39 @@
+#!/bin/bash
+# RB Autofill
+function create_rb {
+  # TODO: Customize your group/reviewers setting as needed
+  GROUP='adapps-dev-reviewers'
+  if [[ "$1" == "dev" ]]; then
+    REVIEWERS='aeaston,atran,dnegandh,mroy,oanashki,ychen2,yocao,xtang'
+  elif [[ "$1" == "webdev" ]]; then
+    REVIEWERS='atran,ckao,dnegandh,nacook,mkreidie,mroy,rcpatel,seburke,tbariana,xtang,ychen2,yocao,zpiper'
+  else
+    REVIEWERS='aeaston,atran,ckao,dnegandh,nacook,mkreidie,mroy,oanashki,rcpatel,seburke,tbariana,xtang,ychen2,yocao,zpiper'
+  fi
+  # Create the 'testing done' template file
+  TMP_FILE='testing_done_template'
+  cat > $TMP_FILE << "EOL"
+**Walled off with LIX:** ADD_LIX_INFO
+**Contains unit tests:** COMMENT
+**'mint test' Results:**
+```
+PASTE_RESULTS_HERE
+```
+**'mint test-casper' Results:**
+```
+PASTE_RESULTS_HERE
+```
+**Testing all affected use cases:**
+ADD_TESTING_DONE
+**Accessibility:** COMMENT
+**Security:** COMMENT
+**Stakeholder communication:** COMMENT
+EOL
+  # Create/update the RB
+  OUTPUT=$(git review create --groups $GROUP --reviewers $REVIEWERS)
+  echo "Yes" | rbt post -u --testing-done-file $TMP_FILE --markdown > /dev/null
+  echo $OUTPUT
+  # Clean up
+  rm $TMP_FILE
+}
+create_rb $1

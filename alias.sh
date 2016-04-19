@@ -1,0 +1,10 @@
+#!/bin/bash
+alias 'mintupdate'='mint update --lkg'
+alias 'grep'='grep --color=always'
+alias 'less'='less -R'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+alias grs='~/Scode/work-env/creat_rb dev'
+alias grj='~/Scode/work-env/creat_rb webdev'
+alias ub='~/Scode/libin/updatebranch.sh'
+alias truncatelog='truncate ~/workspace/tscp-admin-frontend_trunk/tscp-admin-frontend/logs/tscp-admin-frontend.log --size 0'
