@@ -4,11 +4,11 @@ function create_rb {
   # TODO: Customize your group/reviewers setting as needed
   GROUP='adapps-dev-reviewers'
   if [[ "$1" == "dev" ]]; then
-    REVIEWERS='aeaston,atran,dnegandh,mroy,oanashki,ychen2,yocao,xtang'
+    REVIEWERS='aeaston,atran,dnegandh,mroy,oanashki,ychen2,yocao,ckao'
   elif [[ "$1" == "webdev" ]]; then
-    REVIEWERS='atran,ckao,dnegandh,nacook,mkreidie,mroy,rcpatel,seburke,tbariana,xtang,ychen2,yocao,zpiper'
+    REVIEWERS='atran,ckao,dnegandh,nacook,mkreidie,mroy,rcpatel,seburke,tbariana,ychen2,yocao,zpiper'
   else
-    REVIEWERS='aeaston,atran,ckao,dnegandh,nacook,mkreidie,mroy,oanashki,rcpatel,seburke,tbariana,xtang,ychen2,yocao,zpiper'
+    REVIEWERS='aeaston,atran,ckao,dnegandh,nacook,mkreidie,mroy,oanashki,rcpatel,seburke,tbariana,ychen2,yocao,zpiper'
   fi
   # Create the 'testing done' template file
   TMP_FILE='testing_done_template'
