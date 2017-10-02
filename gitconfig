@@ -1,9 +1,9 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Alicia Tang
-	email = alicia.x.tang@gmail.com
+  email = xtang@linkedin.com
 [push]
-	default = simple
+  default = current
 [alias]
 	co = checkout
 	ci = commit
@@ -11,6 +11,13 @@
 	br = branch
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	ll = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+	caphelp = !echo 'CAP config v4\n\n    git caphelp\n        Print this help message.\n\n    git capupdate\n        Fetch the latest version of these aliases.\n\n    git currentbranch\n        Prints the current branch.\n\n    git reviewid\n        Prints the current review id.\n\n    git start <branch name>\n        Updates master and starts a new branch based on master.\n \n    git update\n        Updates master and rebases the current branch on master.\n\n    git submit\n        Submits the current branch (started with git start) to the server.\n'
+	capupdate = !curl -sL https://gitli.corp.linkedin.com/cap/gitconfig/raw/setup.sh | sh
+	currentbranch = rev-parse --abbrev-ref HEAD
+	reviewid = "!f() { BR=`git currentbranch`; git config --get branch.$BR.reviewid; }; f"
+	start = "!f() { [ $# -ne 1 ] && echo \"usage: git start <branch name>\" || git checkout master && git pull --rebase && git checkout -b $1; }; f"
+	update = "!f() { BR=`git currentbranch`; git checkout master && git pull --rebase && git checkout $BR && git rebase master; }; f"
+	checkin = "!f() { [ $# -eq 0 ] && RID=`git reviewid` || RID=$1 && echo \"Submitting RB $RID\" && BR=`git currentbranch` && git checkout master && git pull --rebase && git checkout $BR && git rebase master && git checkout master && git merge --squash $BR && git commit && git review dcommit -r $RID && git submit --async && git branch -m $BR zDone_$BR && echo \"Submitted RB $RID\"; }; f"
 [apply]
 	whitespace = nowarn
 [color]
@@ -30,3 +37,7 @@
     added = yellow
     changed = green
     untracked = cyan
+[pull]
+	rebase = true
+[core]
+	excludesfile = /home/xtang/.gitexcludes

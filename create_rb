@@ -2,13 +2,14 @@
 # RB Autofill
 function create_rb {
   # TODO: Customize your group/reviewers setting as needed
-  GROUP='adapps-dev-reviewers'
+  GROUP='team-rocket-reviewers'
   if [[ "$1" == "dev" ]]; then
-    REVIEWERS='aeaston,atran,dnegandh,mroy,oanashki,ychen2,yocao,ckao'
+    REVIEWERS='aeaston,atran,dnegandh,mroy,oanashki,ychen2,ckao'
   elif [[ "$1" == "webdev" ]]; then
-    REVIEWERS='atran,ckao,dnegandh,nacook,mkreidie,mroy,rcpatel,seburke,tbariana,ychen2,yocao,zpiper'
+    REVIEWERS='atran,nacook,mkreidie,rcpatel,seburke,zpiper'
+    GROUP+=',adapps-dev-reviewers'
   else
-    REVIEWERS='aeaston,atran,ckao,dnegandh,nacook,mkreidie,mroy,oanashki,rcpatel,seburke,tbariana,ychen2,yocao,zpiper'
+    REVIEWERS='aeaston,atran,ckao,dnegandh,mroy,oanashki,tbariana,ychen2'
   fi
   # Create the 'testing done' template file
   TMP_FILE='testing_done_template'
