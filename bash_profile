@@ -9,3 +9,4 @@ export GREP_OPTIONS='--color=always'
 
 source ~/Scode/work-env/alias
 source ~/Scode/work-env/ls-colors.redhat
+source ~/.bashrc
