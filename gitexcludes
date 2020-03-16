@@ -2,8 +2,4 @@
 .swp
 *.ipr
 *.iws
-<<<<<<< Updated upstream
-=======
-build.gradle
 out
->>>>>>> Stashed changes
