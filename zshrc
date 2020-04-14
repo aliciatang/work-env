@@ -1,4 +1,5 @@
 fpath=(~/.zsh $fpath)
-export PATH="/usr/local/sbin:$PATH"
+path+=/usr/local/sbin
+path+=/export/content/linkedin/bin/
 source ~/Scode/work-env/ls-colors.mac
  
