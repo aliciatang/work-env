@@ -2,4 +2,8 @@
 .swp
 *.ipr
 *.iws
+*.swp
 out
+identity.*
+azk
+/projects.properties
